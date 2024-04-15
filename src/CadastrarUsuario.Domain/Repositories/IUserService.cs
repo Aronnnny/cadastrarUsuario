@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace CadastrarUsuario.Domain.Repositories
 {
-    public interface IUserRepository
+    public interface IUserService
     {
         User GetById(Guid id);
         IEnumerable<User> GetAll();
-        Guid Add(User user);
-        void Update(User user);
-        void Delete(Guid id);
+        Guid Add(string name, string password, string email, string cpf, string phoneNumber);
+        bool Update(Guid id, string name, string password, string email, string cpf, string phoneNumber);
+        bool Delete(Guid id);
     }
 }

@@ -9,14 +9,14 @@ namespace CadastrarUsuario.Domain.Models
 {
     public class User
     {
-        public Guid Id { get; private set; }
+        public Guid Id { get; private set; } = Guid.NewGuid();
         public string Name { get; private set; }
         public string Password { get; private set; }
         public string Email { get; private set; }
         public string Cpf { get; private set; }
         public string PhoneNumber { get; private set; }
 
-        public User(Guid id, string name, string password, string email, string cpf, string phoneNumber)
+        public User(string name, string password, string email, string cpf, string phoneNumber)
         {
             ValidateName(name);
             ValidatePassword(password);
@@ -24,11 +24,19 @@ namespace CadastrarUsuario.Domain.Models
             ValidateCpf(cpf);
             ValidatePhoneNumber(phoneNumber);
 
-            Id = id;
             Name = name;
             Password = password;
             Email = email;
             Cpf = cpf;
+            PhoneNumber = phoneNumber;
+        }
+
+        public void Update(string name, string password, string email, string cpf, string phoneNumber) 
+        {
+            Name = name;
+            Password = password; 
+            Email = email; 
+            Cpf = cpf; 
             PhoneNumber = phoneNumber;
         }
 
